@@ -32,20 +32,21 @@ public class ScoreboardController : MonoBehaviour {
 
 	public void Player1Point() {
 
-		if (player1Score <= 10) {
+		if (player1Score < 10) {
 			player1Score += 1;
 			player1Text.text = player1Score.ToString ();
-		} else if (player1Score == 10) {
+			Debug.Log (player1Score);
+		} else if (player1Score >= 10) {
 			SceneManager.LoadScene (2);
 		}
 	}
 
 	public void Player2Point() {
 		
-		if (player2Score <= 10) {
+		if (player2Score < 10) {
 			player2Score += 1;
 			player2Text.text = player2Score.ToString ();
-		} else if (player2Score == 10) {
+		} else if (player2Score >= 10) {
 			SceneManager.LoadScene (3);
 		}
 	}

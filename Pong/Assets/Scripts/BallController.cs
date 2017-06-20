@@ -38,25 +38,25 @@ public class BallController : MonoBehaviour {
 
 		switch (hit.gameObject.name) {
 		case "TopBoundary":
-			rbComponent.velocity = new Vector3 (changeXSpeedDirection(), -8f, 0f);
+			rbComponent.velocity = new Vector3 (changeXSpeedDirection(), -10f, 0f);
 			break;
 		case "BottomBoundary":
-			rbComponent.velocity = new Vector3 (changeXSpeedDirection(), 8f, 0f);
+			rbComponent.velocity = new Vector3 (changeXSpeedDirection(), 10f, 0f);
 			break;
 		case "RightPaddle":
-			rbComponent.velocity = new Vector3 (-8f, 0f, 0f); //bounces straight to the left
+			rbComponent.velocity = new Vector3 (-10f, 0f, 0f); //bounces straight to the left
 			if (hitPaddlePosition < -0.5) { //hit lower half of right paddle
-				rbComponent.velocity = new Vector3 (-8f, -8f, 0f); //bounce ball back to the left with an upward angle
+				rbComponent.velocity = new Vector3 (-10f, -10f, 0f); //bounce ball back to the left with an upward angle
 			} else if (hitPaddlePosition > 0.5) { //hit upper half of the right paddle
-				rbComponent.velocity = new Vector3 (-8f, 8f, 0f); //bounce ball back to the left with a downward angle
+				rbComponent.velocity = new Vector3 (-10f, 10f, 0f); //bounce ball back to the left with a downward angle
 			}
 			break;
 		case "LeftPaddle":
-			rbComponent.velocity = new Vector3 (8f, 0f, 0f); //bounces straight to the right
+			rbComponent.velocity = new Vector3 (10f, 0f, 0f); //bounces straight to the right
 			if (hitPaddlePosition < -0.5) { //hit lower half of right paddle
-				rbComponent.velocity = new Vector3 (8f, -8f, 0f); //bounce ball back to the right with an upward angle
+				rbComponent.velocity = new Vector3 (10f, -10f, 0f); //bounce ball back to the right with an upward angle
 			} else if (hitPaddlePosition > 0.5) { //hit upper half of the right paddle
-				rbComponent.velocity = new Vector3 (8f, 8f, 0f); //bounce ball back to the right with a downward angle
+				rbComponent.velocity = new Vector3 (10f, 10f, 0f); //bounce ball back to the right with a downward angle
 			}
 			break;
 		}
@@ -89,10 +89,10 @@ public class BallController : MonoBehaviour {
 		//Check if X direction is left or right
 		switch (xDirection) { 
 		case 0:
-			launchDirection.x = -8f; 
+			launchDirection.x = -10f; 
 			break;
 		case 1:
-			launchDirection.x = 8f;
+			launchDirection.x = 10f;
 			break;
 		default:
 			break;
@@ -102,10 +102,10 @@ public class BallController : MonoBehaviour {
 		switch (yDirection)
 		{ 
 		case 0:
-			launchDirection.y = -8f;
+			launchDirection.y = -10f;
 			break;
 		case 1:
-			launchDirection.y = 8f;
+			launchDirection.y = 10f;
 			break;
 		default:
 			break;
@@ -121,9 +121,9 @@ public class BallController : MonoBehaviour {
 		float speedInXDirection = 0f;
 
 		if (rbComponent.velocity.x > 0f) { //going to the left
-			speedInXDirection = 8f; //bounce to right side
+			speedInXDirection = 10f; //bounce to right side
 		} else if (rbComponent.velocity.x < 0f) { //going to the right
-			speedInXDirection = -8f; //bounce to left side
+			speedInXDirection = -10f; //bounce to left side
 		}
 		return speedInXDirection;
 	}
