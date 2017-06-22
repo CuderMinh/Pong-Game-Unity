@@ -12,12 +12,11 @@ public class ScoreboardController : MonoBehaviour {
 	public Text player1Text;
 	public Text player2Text;
 
-//	public Text player1Wins;
-//	public Text player2Wins;
-
 	//Variables to get the score of each player
 	public int player1Score;
 	public int player2Score;
+
+	public int scoreToWin = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -32,21 +31,25 @@ public class ScoreboardController : MonoBehaviour {
 
 	public void Player1Point() {
 
-		if (player1Score < 10) {
+		if (player1Score < scoreToWin) {
 			player1Score += 1;
 			player1Text.text = player1Score.ToString ();
 			Debug.Log (player1Score);
-		} else if (player1Score >= 10) {
+		}
+
+		if (player1Score == scoreToWin) {
 			SceneManager.LoadScene (2);
 		}
 	}
 
 	public void Player2Point() {
 		
-		if (player2Score < 10) {
+		if (player2Score < scoreToWin) {
 			player2Score += 1;
 			player2Text.text = player2Score.ToString ();
-		} else if (player2Score >= 10) {
+		} 
+
+		if (player2Score == scoreToWin) {
 			SceneManager.LoadScene (3);
 		}
 	}

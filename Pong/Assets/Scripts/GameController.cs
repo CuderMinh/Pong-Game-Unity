@@ -1,43 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject LeftPaddle;
-	public GameObject RightPaddle;
+	//Multiplayer Option
+	public int numberOfPlayers;
+
+	public PaddleController leftPaddle;
+	public PaddleController rightPaddle;
+
+	public bool isHumanInput;
+	public bool isComputerControlled;
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//Left Paddle Controller
-		LeftPaddle.GetComponent<Rigidbody> ().velocity = new Vector3 (0f, 0f, 0f);
-		if (Input.GetKey (KeyCode.W)) { //If player is pressing up
-			LeftPaddle.GetComponent<Rigidbody> ().velocity = new Vector3 (0f, 8f, 0f);
-		} else if (Input.GetKey (KeyCode.S)) { //If player is pressing down
-			LeftPaddle.GetComponent<Rigidbody> ().velocity = new Vector3 (0f, -8f, 0f);
-		} else { 	//pressing neither of the keys
-			LeftPaddle.GetComponent<Rigidbody> ().velocity = new Vector3 (0f, 0f, 0f);
-		}
+		numberOfPlayers = MenuController.numberOfPlayers;	
+		this.StartGame ();
+	}
 
-		//Right Paddle Controller
-		//Default speed of 0 in every frame
-		RightPaddle.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+	public void StartGame () {
 
-		//If player is pressing up
-		if (Input.GetKey (KeyCode.UpArrow)) {
-			RightPaddle.GetComponent<Rigidbody>().velocity = new Vector3(0f, 8f, 0f);
-		} 
-		//If player is pressing down
-		else if (Input.GetKey (KeyCode.DownArrow)) {
-			RightPaddle.GetComponent<Rigidbody>().velocity = new Vector3(0f, -8f, 0f);
-		} else {
-			//pressing neither of the keys
-			RightPaddle.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+		leftPaddle.isHumanInput = false;
+		leftPaddle.isComputerControlled = false;
+		rightPaddle.isComputerControlled = false;
+		rightPaddle.isHumanInput = false;
+
+
+		Debug.Log("GameController");
+		if (numberOfPlayers == 1) {
+			leftPaddle.isHumanInput = true;
+			rightPaddle.isComputerControlled = true;
+		} else if (numberOfPlayers == 2) {
+			leftPaddle.isHumanInput = true;
+			rightPaddle.isHumanInput = true;
 		}
 	}
 }
