@@ -16,7 +16,7 @@ public class ScoreboardController : MonoBehaviour {
 	public int player1Score;
 	public int player2Score;
 
-	public int scoreToWin = 3;
+	public int scoreToWin = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +34,6 @@ public class ScoreboardController : MonoBehaviour {
 		if (player1Score < scoreToWin) {
 			player1Score += 1;
 			player1Text.text = player1Score.ToString ();
-			Debug.Log (player1Score);
 		}
 
 		if (player1Score == scoreToWin) {

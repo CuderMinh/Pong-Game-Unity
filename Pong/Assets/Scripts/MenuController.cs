@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour {
 
 	public static int numberOfPlayers;
-	protected Text helpInstruction;
+	protected Text helpInstruction; //Applicable only to Help Scene
 
 	// Use this for initialization
 	void Start () {

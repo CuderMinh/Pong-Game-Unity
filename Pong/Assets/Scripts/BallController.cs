@@ -6,7 +6,8 @@ public class BallController : MonoBehaviour {
 
 	Rigidbody ballComponent; //rigid body attached to Game Object component
 	public GameObject ball;
-	public float ballSpeed = 15;
+	private float ballSpeed = 15;
+	private float waitTime = 2;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +28,7 @@ public class BallController : MonoBehaviour {
 			ScoreboardController.instance.Player1Point ();
 		}
 
-		//Checks if the ball is out of bounds from the left, player 2 scores
+		//Checks if the ball is OUT OF BOUNDS from the left, player 2 scores
 		if (transform.position.x < -(ballSpeed)) {
 			StartCoroutine (Pause ());
 			ScoreboardController.instance.Player2Point ();
@@ -41,7 +42,7 @@ public class BallController : MonoBehaviour {
 		transform.position = Vector3.zero; //Ball always starts from the center of the scene. 
 		ball.SetActive(true);
 		//wait for 2 seconds
-		yield return new WaitForSeconds (2.0f);
+		yield return new WaitForSeconds (waitTime);
 		//Call Function to launch ball
 		LaunchBall ();
 
